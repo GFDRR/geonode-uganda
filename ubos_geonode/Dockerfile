@@ -61,8 +61,7 @@ RUN cp wait-for-databases.sh /usr/bin/wait-for-databases
 #MAINTAINER Ariel Núñez<ariel@terranodo.io>
 
 RUN mkdir -p /usr/src/empty
-RUN apt-get update && apt-get install -y uwsgi uwsgi-plugin-python
-
+RUN ln -fs /usr/lib/python2.7/plat-x86_64-linux-gnu/_sysconfigdata_nd.py /usr/lib/python2.7/
 COPY scripts/misc/uwsgi.ini /usr/src/
 
 RUN pip install --upgrade -e /usr/src/app/
