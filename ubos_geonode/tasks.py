@@ -46,8 +46,8 @@ http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
     current_allowed.extend(['{}'.format(pub_ip), '{}:{}'.format(pub_ip, pub_port)])
     allowed_hosts = ['"{}"'.format(c) for c in current_allowed]
 
-    ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(), pty=True)
-    ctx.run('echo echo export ALLOWED_HOSTS="\\"{}\\""'.format(), pty=True)
+    ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(allowed_hosts), pty=True)
+    ctx.run('echo echo export ALLOWED_HOSTS="\\"{}\\""'.format(allowed_hosts), pty=True)
     if not os.environ.get('DATABASE_URL'):
         ctx.run("echo export DATABASE_URL=\
 {dburl} >> {override_fn}".format(**envs), pty=True)
