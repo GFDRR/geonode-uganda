@@ -31,20 +31,16 @@ def update(ctx):
         "public_host": "{0}".format(pub_ip),
         "dburl": db_url,
         "geodburl": geodb_url,
+        "allowed_hosts": os.getenv('ALLOWED_HOSTS') or '{}'.format(pub_id),
         "override_fn": "$HOME/.override_env"
     }
-    print "got env"
-    print os.environ
     if not os.environ.get('GEOSERVER_PUBLIC_LOCATION'):
         ctx.run("echo export GEOSERVER_PUBLIC_LOCATION=\
 http://{public_fqdn}/geoserver/ >> {override_fn}".format(**envs), pty=True)
     if not os.environ.get('SITEURL'):
         ctx.run("echo export SITEURL=\
 http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
-    if not os.environ.get("ALLOWED_HOSTS"):
-        ctx.run("echo export ALLOWED_HOSTS=\
-\"\\\"['{public_fqdn}', '{public_host}',]\\\"\" \
->> {override_fn}".format(**envs), pty=True)
+    ctx.run('echo export ALLOWED_HOSTS="{allowed_hosts},{public_fqdn},{public_host}"'.format(**envs), pty=True)
     if not os.environ.get('DATABASE_URL'):
         ctx.run("echo export DATABASE_URL=\
 {dburl} >> {override_fn}".format(**envs), pty=True)
