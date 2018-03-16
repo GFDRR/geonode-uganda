@@ -33,16 +33,23 @@ def update(ctx):
         "geodburl": geodb_url,
         "override_fn": "$HOME/.override_env"
     }
-    ctx.run("echo export GEOSERVER_PUBLIC_LOCATION=\
+    print "got env"
+    print os.environ
+    if not os.environ.get('GEOSERVER_PUBLIC_LOCATION'):
+        ctx.run("echo export GEOSERVER_PUBLIC_LOCATION=\
 http://{public_fqdn}/geoserver/ >> {override_fn}".format(**envs), pty=True)
-    ctx.run("echo export SITEURL=\
+    if not os.environ.get('SITEURL'):
+        ctx.run("echo export SITEURL=\
 http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
-    ctx.run("echo export ALLOWED_HOSTS=\
+    if not os.environ.get("ALLOWED_HOSTS"):
+        ctx.run("echo export ALLOWED_HOSTS=\
 \"\\\"['{public_fqdn}', '{public_host}',]\\\"\" \
 >> {override_fn}".format(**envs), pty=True)
-    ctx.run("echo export DATABASE_URL=\
+    if not os.environ.get('DATABASE_URL'):
+        ctx.run("echo export DATABASE_URL=\
 {dburl} >> {override_fn}".format(**envs), pty=True)
-    ctx.run("echo export GEODATABASE_URL=\
+    if not os.environ.get('GEODATABASE_URL'):
+        ctx.run("echo export GEODATABASE_URL=\
 {geodburl} >> {override_fn}".format(**envs), pty=True)
     ctx.run("source $HOME/.override_env", pty=True)
     print "****************************final**********************************"
@@ -132,7 +139,7 @@ def _update_geodb_connstring():
 
 
 def _localsettings():
-    settings = os.getenv('DJANGO_SETTINGS_MODULE', 'geonode.settings')
+    settings = os.getenv('DJANGO_SETTINGS_MODULE', 'ubos_geonode.settings')
     return settings
 
 

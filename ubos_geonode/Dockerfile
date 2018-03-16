@@ -12,4 +12,4 @@ RUN pip install -e /usr/src/app
 
 
 EXPOSE 8000
-CMD ["uwsgi", "-c", "/usr/src/uwsgi.ini"]
+CMD ["uwsgi", "--ini", "/usr/src/uwsgi.ini"]

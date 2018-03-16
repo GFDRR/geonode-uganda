@@ -28,7 +28,7 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
-    command: django-admin.py runserver 0.0.0.0:8000 --settings=geonode.settings
+    #command: django-admin.py runserver 0.0.0.0:8000 --settings=geonode.settings
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:
@@ -45,6 +45,7 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
+      - data-dir-conf
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
       - geoserver-data-dir:/geoserver_data/data
