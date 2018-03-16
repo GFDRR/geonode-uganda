@@ -27,7 +27,7 @@ def update(ctx):
     db_url = _update_db_connstring()
     geodb_url = _update_geodb_connstring()
     envs = {
-        "public_fqdn": "{0}:{1}".format(pub_ip, pub_port),
+        "public_fqdn": "{0}:{1}".format(pub_ip, pub_port or 80),
         "public_host": "{0}".format(pub_ip),
         "dburl": db_url,
         "geodburl": geodb_url,
@@ -44,7 +44,10 @@ http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
     except ValueError:
         current_allowed = []
     current_allowed.extend(['{}'.format(pub_ip), '{}:{}'.format(pub_ip, pub_port)])
-    ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(['"{}"'.format(c) for c in current_allowed]), pty=True)
+    allowed_hosts = ['"{}"'.format(c) for c in current_allowed]
+
+    ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(), pty=True)
+    ctx.run('echo echo export ALLOWED_HOSTS="\\"{}\\""'.format(), pty=True)
     if not os.environ.get('DATABASE_URL'):
         ctx.run("echo export DATABASE_URL=\
 {dburl} >> {override_fn}".format(**envs), pty=True)
