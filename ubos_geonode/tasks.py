@@ -41,7 +41,7 @@ http://{public_fqdn}/geoserver/ >> {override_fn}".format(**envs), pty=True)
 http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
     try:
         current_allowed = ast.literal_eval(os.getenv('ALLOWED_HOSTS') or '[]')
-    except ValueErrr:
+    except ValueError:
         current_allowed = []
     current_allowed.extend(['{}'.format(pub_ip), '{}:{}'.format(pub_ip, pub_port)])
     ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(['"{}"'.format(c) for c in current_allowed]), pty=True)
