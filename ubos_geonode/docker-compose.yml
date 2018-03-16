@@ -28,7 +28,7 @@ services:
         org.geonode.instance.name: geonode
     depends_on:
       - db
-    #command: django-admin.py runserver 0.0.0.0:8000 --settings=geonode.settings
+    command:  uwsgi --ini /usr/src/app/uwsgi.ini
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
     env_file:

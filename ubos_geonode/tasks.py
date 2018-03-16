@@ -59,7 +59,7 @@ http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
 @task
 def migrations(ctx):
     print "**************************migrations*******************************"
-    ctx.run("django-admin.py migrate --noinput --settings={0}".format(
+    ctx.run("python manage.py migrate --noinput --settings={0}".format(
         _localsettings()
     ), pty=True)
 
@@ -101,17 +101,16 @@ address {0}".format(ip_list[0]))
 
 def _container_exposed_port(component, instname):
     client = docker.from_env()
-    ports_dict = json.dumps(
-        [c.attrs['Config']['ExposedPorts'] for c in client.containers.list(
+    ports_dict = [c.attrs['Config']['ExposedPorts'] for c in client.containers.list(
             filters={
                 'label': 'org.geonode.component={0}'.format(component),
                 'status': 'running'
             }
-        ) if '{0}'.format(instname) in c.name][0]
-    )
-    for key in json.loads(ports_dict):
-        port = re.split('/tcp', key)[0]
-    return port
+        ) if '{0}'.format(instname) in c.name]
+    for key in ports_dict[:1]:
+        if isinstance(key, basestring):
+            port = re.split('/tcp', key)[0]
+            return port
 
 
 def _update_db_connstring():
