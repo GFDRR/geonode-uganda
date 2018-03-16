@@ -1,3 +1,4 @@
+import ast
 import json
 import logging
 import os
@@ -19,7 +20,6 @@ def waitfordbs(ctx):
 @task
 def update(ctx):
     print "***************************initial*********************************"
-    ctx.run("env", pty=True)
     pub_ip = _geonode_public_host_ip()
     print "Public Hostname or IP is {0}".format(pub_ip)
     pub_port = _geonode_public_port()
@@ -31,7 +31,6 @@ def update(ctx):
         "public_host": "{0}".format(pub_ip),
         "dburl": db_url,
         "geodburl": geodb_url,
-        "allowed_hosts": os.getenv('ALLOWED_HOSTS') or '{}'.format(pub_id),
         "override_fn": "$HOME/.override_env"
     }
     if not os.environ.get('GEOSERVER_PUBLIC_LOCATION'):
@@ -40,7 +39,12 @@ http://{public_fqdn}/geoserver/ >> {override_fn}".format(**envs), pty=True)
     if not os.environ.get('SITEURL'):
         ctx.run("echo export SITEURL=\
 http://{public_fqdn}/ >> {override_fn}".format(**envs), pty=True)
-    ctx.run('echo export ALLOWED_HOSTS="{allowed_hosts},{public_fqdn},{public_host}"'.format(**envs), pty=True)
+    try:
+        current_allowed = ast.literal_eval(os.getenv('ALLOWED_HOSTS') or '[]')
+    except ValueErrr:
+        current_allowed = []
+    current_allowed.extend(['{}'.format(pub_ip), '{}:{}'.format(pub_ip, pub_port)])
+    ctx.run('echo export ALLOWED_HOSTS="\\"{}\\""'.format(['"{}"'.format(c) for c in current_allowed]), pty=True)
     if not os.environ.get('DATABASE_URL'):
         ctx.run("echo export DATABASE_URL=\
 {dburl} >> {override_fn}".format(**envs), pty=True)
