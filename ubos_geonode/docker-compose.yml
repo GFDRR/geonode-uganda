@@ -31,7 +31,7 @@ services:
     command:  uwsgi --ini /usr/src/app/uwsgi.ini
     volumes:
       - /var/run/docker.sock:/var/run/docker.sock
-      - statics:/mnt/volumes/statics;
+      - statics:/mnt/volumes/statics
     env_file:
       - ./scripts/docker/env/production/django.env
 
@@ -69,7 +69,7 @@ services:
     ports:
       - "80:80"
     volumes:
-      - statics:/mnt/volumes/statics;
+      - statics:/mnt/volumes/statics
 
   data-dir-conf:
     image: geonode/geoserver_data:2.12.x

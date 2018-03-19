@@ -17,6 +17,8 @@ echo "waitfordbs task done"
 
 echo "running migrations"
 /usr/local/bin/invoke migrations
+/usr/local/bin/invoke statics
+
 echo "migrations task done"
 /usr/local/bin/invoke prepare
 echo "prepare task done"
