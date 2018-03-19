@@ -53,7 +53,8 @@ services:
       - ./scripts/docker/env/production/geoserver.env
 
   geonode:
-    image: geonode/nginx:geoserver
+    #image: geonode/nginx:geoserver
+    build: ./scripts/docker/nginx/
     restart: unless-stopped
     container_name: nginx4${COMPOSE_PROJECT_NAME}
     stdin_open: true
