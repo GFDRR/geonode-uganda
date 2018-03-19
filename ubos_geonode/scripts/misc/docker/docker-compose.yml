@@ -1,0 +1,30 @@
+version: '2'
+services:
+
+  postgres:
+    image: postgres:9.5
+
+  django:
+    build: .
+    links:
+      - postgres
+    environment:
+      - DATABASE_URL=postgres://postgres:postgres@postgres:5432/postgres
+      - DJANGO_SETTINGS_MODULE=ubos_geonode.settings
+      - GEOSERVER_BASE_URL="http://geoserver:8080/geoserver/"
+      - ALLOWED_HOSTS=['django','master.demo.geonode.org']
+
+  geoserver:
+    image: geonode/geoserver:2.12.x
+    links:
+      - postgres
+    ports:
+      - "8080"
+
+  nginx:
+    image: terranodo/nginx:geoserver
+    links:
+      - django
+      - geoserver
+    ports:
+      - "80:80"
