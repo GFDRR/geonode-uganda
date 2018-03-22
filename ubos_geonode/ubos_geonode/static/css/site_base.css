@@ -20,6 +20,13 @@ font-weight: bold;
 font-size: 14px;
 }
 
+.navbar {
+    /* position: relative; */
+    min-height: 100px;
+    margin-bottom: 22px;
+    border: 1px solid transparent;
+}
+
 .navbar-brand {
   background: url(../img/ubos-logo.png) 0 10px no-repeat;
   background-size: 85%;
