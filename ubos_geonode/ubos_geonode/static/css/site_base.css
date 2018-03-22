@@ -1,0 +1,51 @@
+.geo-bg{
+/**background-image: url("../img/geo-bg-old.jpg");
+background-repeat: no-repeat;
+background-size: 100%;**/
+/**background-position: 100% top;**/
+/**background-attachment: fixed;**/
+/**width: 1920px;
+height: 150px;**/
+}
+
+.geo-text{
+font-weight: bold;
+font-size: 14px;
+}
+
+.navbar {
+  /* position: relative; */
+  min-height: 100px;
+  margin-bottom: 22px;
+  border: 1px solid transparent;
+}
+
+.navbar-brand {
+  background: url(../img/ubos-logo.png) 0 10px no-repeat;
+  background-size: 85%;
+  text-indent: -9999px;
+  height: 57px;
+  width: 250px;
+  padding-top: 5px;
+}
+.logo-wb {
+   background-image: url("../img/wb-logo.png");
+   background-repeat: no-repeat;
+   height: 92px;
+   width: 500px;
+   margin-top: 50px;     
+}
+
+.logo-geo {
+  background-image: url("../img/geo-logo.png");
+  background-repeat: no-repeat;
+  height: 250px;
+  width: 500px;
+ 
+}
+
+.items-list .abstract {
+  color: #777777;
+  font-weight: 300;
+  min-height: 70px;
+}

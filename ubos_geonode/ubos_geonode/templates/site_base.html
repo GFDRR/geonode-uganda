@@ -1,0 +1,77 @@
+{% extends "base.html" %}
+{% load i18n %}
+{% block extra_head %}
+      <link href="{{ STATIC_URL }}css/site_base.css" rel="stylesheet"/>
+{% endblock %}
+
+{% block footer %}
+  <footer>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-2">
+          <ul class="list-unstyled">
+            <li>Data</li>
+            <li><a href="{% url "layer_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Layers" %}</a></li>
+            <li><a href="{% url "document_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Documents" %}</a></li>
+            {% if user.is_authenticated %}
+            <li><a href="{% url "services" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Remote Services" %}</a></li>
+            <li><a href="{% url "layer_upload" %}">Upload Layer</a></li>
+            {% if 'geonode.contrib.createlayer' in INSTALLED_APPS %}
+              <li><a href="{% url "layer_create" %}">{% trans "Create Layer" %}</a></li>
+            {% endif %}
+            <li><a href="{% url "document_upload" %}">Upload Document</a></li>
+            <li><a href="{% url "register_service" %}">{% trans "Add Remote Service" %}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-2">
+          <ul class="list-unstyled">
+            <li>Maps</li>
+            <li><a href="{% url "maps_browse" %}?limit={{ CLIENT_RESULTS_LIMIT }}">{% trans "Explore Maps" %}</a></li>
+            {% if user.is_authenticated %}
+            <li> <a href="{% url "new_map" %}">{% trans "Create Map" %}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+		<div class="col-md-2">
+          <ul class="list-unstyled">
+            <li>About</li>
+            <li><a href="{% url "profile_browse" %}">{% trans "People" %}</a></li>
+            <li><a href="{% url "group_list" %}">{% trans "Groups" %}</a></li>
+            {% if perms.announcements.can_manage %}
+            <li><a href="{% url "announcements_list" %}">{% trans "Announcements" %}</a></li>
+            {% endif %}
+            <li><a href="{% url "geonode.invitations:geonode-send-invite" %}">{% trans "Invite Users" %}</a></li>
+            {% if user.is_superuser %}
+            <li><a href="/admin/people/profile/add/">{% trans "Add User" %}</a></li>
+            <li><a href="{% url "group_create" %}">{% trans "Create Group" %}</a></li>
+            {% endif %}
+          </ul>
+        </div>
+        <div class="col-md-6 text-right">
+          <ul class="list-unstyled">
+                  <li style="text-align: left;"><h2>Contact Us </h2> </li>    
+       <li style="text-align: left;">
+          Geo-Information Services Division,
+          Uganda Bureau of Statistics </li>
+       <li style="text-align: left;"> Physical Address: Statistics House </li>
+       <li style="text-align: left;">Plot 9, Colville Street </li>
+       <li style="text-align: left;">P.O. Box 7186 </li>
+       <li style="text-align: left;">Kampala, Uganda </li>
+       <li style="text-align: left;"> Tel:+256 - 414 -706000 </li>
+       <li style="text-align: left;"> Fax: +256 - 414 -237553 </li>
+       <li style="text-align: left;"> Email: gis@ubos.org </li>
+          </ul>
+ <ul class="list-unstyled">
+<li>{% trans "Powered By" %} <a href="http://geonode.org"> {% trans "Geonode" %}</a></li>
+</ul>
+          <label class="hidden">{% trans "Language" %}</label>
+          {% if csrf_token != "NOTPROVIDED" %}
+          {% get_current_language as LANGUAGE %}
+           {% endif %}
+        </div>
+      </div>
+    </div>
+  </footer>
+{% endblock footer %}
+
