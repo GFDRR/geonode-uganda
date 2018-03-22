@@ -1,5 +1,7 @@
 {% extends 'index.html' %}
 {% load i18n %}
+{% load staticfiles %}
+{% load base_tags %}
 {% comment %}
 This is where you can override the hero area block. You can simply modify the content below or replace it wholesale to meet your own needs. 
 {% endcomment %}
@@ -17,20 +19,24 @@ This is where you can override the hero area block. You can simply modify the co
   </div>
   {% endblock %}
 
-  {%block partners %}
-  <section id="partners">
-    <div class="container text-center">
-        <h2>Our Partners </h2> 
-        <div class="row">
-            <div class="col-md-6">
-                <div class="logo-wb">
+  {% block mainbody %}
+    {{ block.super }}
+    
+      {%block partners %}
+      <section id="partners">
+        <div class="container text-center">
+            <h2>Our Partners </h2> 
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="logo-wb">
+                    </div>
                 </div>
-            </div>
-            <div class="col-md-6">
-                <div class="logo-geo">
+                <div class="col-md-6">
+                    <div class="logo-geo">
+                    </div>
                 </div>
             </div>
         </div>
-    </div>
-  </section>
-  {%endblock%}
+      </section>
+      {%endblock%}
+   {%endblock%}
