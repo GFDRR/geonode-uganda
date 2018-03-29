@@ -1,11 +1,12 @@
 .geo-bg{
-/**background-image: url("../img/geo-bg-old.jpg");
+background-image: url("../img/geo-bg-old.jpg");
 background-repeat: no-repeat;
-background-size: 100%;**/
+background-size: cover;
+background-width: 100%;
 /**background-position: 100% top;**/
 /**background-attachment: fixed;**/
-/**width: 1920px;
-height: 150px;**/
+width: 1200px;
+height: 249px;
 }
 
 .geo-text{
