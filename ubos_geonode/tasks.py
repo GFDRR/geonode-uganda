@@ -68,8 +68,8 @@ def migrations(ctx):
 
 @task
 def statics(ctx):
-    print "**************************migrations*******************************"
-    ctx.run("python manage.py collectstatic --noinput --settings={0}".format(
+    print "************************** statics *******************************"
+    ctx.run("python manage.py collectstatic --noinput --clear --settings={0}".format(
         _localsettings()
     ), pty=True)
 
