@@ -1,3 +1,21 @@
+.banner {
+height: 24.5em; padding-top: 0px;
+
+}
+
+.banner .jumbotron {
+
+background: #2c689c;
+color: white;
+margin-bottom: 0px;
+padding: 0em;
+text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
+margin-top: -3.25em;
+
+}
+
+
+
 .geo-bg{
 background-image: url("../img/geo-bg-old.jpg");
 background-repeat: no-repeat;
@@ -5,7 +23,7 @@ background-size: cover;
 background-width: 100%;
 /**background-position: 100% top;**/
 /**background-attachment: fixed;**/
-width: 1200px;
+/**width: 1200px;**/
 height: 249px;
 }
 
@@ -22,11 +40,11 @@ font-size: 14px;
 }
 
 .navbar-brand {
-  background: url(../img/ubos-logo.png) 0 10px no-repeat;
+  background: url(../img/logo-s.png) 0 10px no-repeat;
   background-size: 85%;
   text-indent: -9999px;
-  height: 57px;
-  width: 250px;
+  height: 92px;
+  width: 290px;
   padding-top: 5px;
 }
 .logo-wb {
