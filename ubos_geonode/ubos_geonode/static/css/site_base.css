@@ -1,5 +1,6 @@
 .banner {
-height: 24.5em; padding-top: 0px;
+
+/** height: 24.5em; padding-top: 0px;**/
 
 }
 
@@ -10,17 +11,17 @@ color: white;
 margin-bottom: 0px;
 padding: 0em;
 text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
-margin-top: -3.25em;
+margin-top: 5.65em;
 
 }
 
 
 
 .geo-bg{
-background-image: url("../img/geo-bg-old.jpg");
+background-image: url("../img/banner.jpg");
 background-repeat: no-repeat;
 background-size: cover;
-background-width: 100%;
+/**background-width: 100%;**/
 /**background-position: 100% top;**/
 /**background-attachment: fixed;**/
 /**width: 1200px;**/
