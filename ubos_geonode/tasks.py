@@ -179,9 +179,12 @@ def _prepare_oauth_fixture():
             "pk": 1001,
             "fields": {
                 "skip_authorization": True,
-                "redirect_uris": "http://{0}:{1}/geoserver/index.html".format(
-                    pub_ip, pub_port
-                ),
+                "redirect_uris": """http://geonode:80/geoserver/index.html
+http://geonode:80/geoserver/
+http://geonode:80/geoserver
+http://ubos.geo-solutions.it/geoserver/index.html
+http://ubos.geo-solutions.it/geoserver/
+http://ubos.geo-solutions.it/geoserver""",
                 "name": "GeoServer",
                 "authorization_grant_type": "authorization-code",
                 "client_type": "confidential",
