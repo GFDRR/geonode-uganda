@@ -369,10 +369,6 @@ LOGGING = {
         }
     },
     'handlers': {
-        'null': {
-            'level': 'INFO',
-            'class': 'django.utils.log.NullHandler',
-        },
         'console': {
             'level': 'INFO',
             'class': 'logging.StreamHandler',
