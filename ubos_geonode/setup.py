@@ -19,7 +19,20 @@
 #########################################################################
 
 import os
+try: # for pip >= 10
+    from pip._internal.req import parse_requirements
+    from pip._internal.download import PipSession
+except ImportError: # for pip <= 9.0.3
+    from pip.req import parse_requirements
+    from pip.download import PipSession
 from distutils.core import setup
+
+from setuptools import find_packages
+
+# Parse requirements.txt to get the list of dependencies
+inst_req = parse_requirements('requirements.txt',
+                              session=PipSession())
+REQUIREMENTS = [str(r.req) for r in inst_req]
 
 def read(*rnames):
     return open(os.path.join(os.path.dirname(__file__), *rnames)).read()
@@ -36,13 +49,14 @@ setup(
     classifiers=[
         'Development Status :: 1 - Planning',
     ],
-    license="BSD",
+    license="GPL",
     keywords="ubos_geonode geonode django",
     url='https://github.com/ubos_geonode/ubos_geonode',
-    packages=['ubos_geonode',],
+    packages=find_packages(),
+    install_requires=REQUIREMENTS,
+    dependency_links=[
+        "git+https://github.com/GeoNode/geonode.git@master#egg=geonode"
+    ],
     include_package_data=True,
     zip_safe=False,
-    install_requires=[
-       # 'geonode>=2.9'
-    ],
 )

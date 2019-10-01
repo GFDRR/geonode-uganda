@@ -17,3 +17,15 @@
 # along with this program. If not, see <http://www.gnu.org/licenses/>.
 #
 #########################################################################
+
+import os
+
+__version__ = (2, 10, 1, 'final', 0)
+
+
+default_app_config = "ubos_geonode.apps.AppConfig"
+
+
+def get_version():
+    import ubos_geonode.version
+    return ubos_geonode.version.get_version(__version__)

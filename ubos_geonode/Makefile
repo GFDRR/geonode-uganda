@@ -4,6 +4,7 @@ up:
 
 build:
 	docker-compose build django
+	docker-compose build celery
 
 sync:
 	# set up the database tablea
