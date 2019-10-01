@@ -1,59 +1,39 @@
 .banner {
 
-/** height: 24.5em; padding-top: 0px;**/
+  /** height: 24.5em; padding-top: 0px;**/
 
 }
 
-.banner .jumbotron {
-
-background: #2c689c;
-color: white;
-margin-bottom: 0px;
-padding: 0em;
-text-shadow: 2px 2px 2px rgba(0,0,0,0.4);
-margin-top: 5.65em;
-
+.geo-bg {
+  background-image: url("../img/banner.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /**background-width: 100%;**/
+  /**background-position: 100% top;**/
+  /**background-attachment: fixed;**/
+  /**width: 1200px;**/
+  height: 249px;
 }
 
-
-
-.geo-bg{
-background-image: url("../img/banner.jpg");
-background-repeat: no-repeat;
-background-size: cover;
-/**background-width: 100%;**/
-/**background-position: 100% top;**/
-/**background-attachment: fixed;**/
-/**width: 1200px;**/
-height: 249px;
-}
-
-.geo-text{
-font-weight: bold;
-font-size: 14px;
+.geo-text {
+  font-weight: bold;
+  font-size: 14px;
 }
 
 .navbar {
   /* position: relative; */
-  min-height: 100px;
-  margin-bottom: 22px;
+  min-height: 50px;
+  margin-bottom: 2px;
   border: 1px solid transparent;
 }
 
-.navbar-brand {
-  background: url(../img/logo-s.png) 0 10px no-repeat;
-  background-size: 85%;
-  text-indent: -9999px;
-  height: 92px;
-  width: 290px;
-  padding-top: 5px;
-}
+
 .logo-wb {
-   background-image: url("../img/wb-logo.png");
-   background-repeat: no-repeat;
-   height: 92px;
-   width: 500px;
-   margin-top: 50px;     
+  background-image: url("../img/wb-logo.png");
+  background-repeat: no-repeat;
+  height: 102px;
+  width: 500px;
+  margin-top: 50px;
 }
 
 .logo-geo {
@@ -61,11 +41,11 @@ font-size: 14px;
   background-repeat: no-repeat;
   height: 250px;
   width: 500px;
- 
+
 }
 
 .items-list .abstract {
   color: #777777;
-  font-weight: 300;
-  min-height: 70px;
+  font-weight: 2200;
+  min-height: 30px;
 }

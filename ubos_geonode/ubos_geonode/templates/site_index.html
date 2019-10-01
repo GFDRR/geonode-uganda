@@ -3,42 +3,45 @@
 {% load staticfiles %}
 {% load base_tags %}
 {% comment %}
-This is where you can override the hero area block. You can simply modify the content below or replace it wholesale to meet your own needs. 
+This is where you can override the hero area block. You can simply modify the content below or replace it wholesale to
+meet your own needs.
 {% endcomment %}
-{% block title %} {% trans "" %}  {{ block.super }} {% endblock %}
+{% block title %} {% trans "" %} {{ block.super }} {% endblock %}
 
 {% block body_class %}home{% endblock %}
 
-  {% block hero %}
-  <div class="banner">
-  <div class="jumbotron">
-  	<div class="geo-bg bg-gradient-light">
-  		<h1 class="text-center">{% trans "Welcome" %}</h1>
-  		<p></p>
-  		<p class="text-primary text-center geo-text" ><a class="btn btn-default btn-lg" href="#">{% blocktrans %}The Uganda Bureau of Statistics Geonode Instance is an open source data dissemination platform for <br />sharing Geo-referenced statistical data and maps{% endblocktrans %}</a></p>
-     <p class="text-center">	<a class="btn btn-default btn-lg" target="_blank" href="http://docs.geonode.org/en/master/tutorials/users/index.html" role="button">{% blocktrans %}Get Started &raquo;{% endblocktrans %}</a></p></div>
+{% block hero %}
+<div class="banner">
+  <div class="jumbotron" style="padding-top: 52px; padding-bottom: 0px;">
+    <div class="geo-bg bg-gradient-light">
+      <h1 class="text-center">{% trans "Welcome" %}</h1>
+      <p></p>
+      <p class="text-primary text-center geo-text"><a class="btn btn-default btn-lg" href="#">{% blocktrans %}The Uganda
+          Bureau of Statistics Geonode Instance is an open source data dissemination platform for <br />sharing
+          Geo-referenced statistical data and maps{% endblocktrans %}</a></p>
+      <p class="text-center"> <a class="btn btn-default btn-lg" target="_blank"
+          href="http://docs.geonode.org/en/master/tutorials/users/index.html" role="button">{% blocktrans %}Get Started
+          &raquo;{% endblocktrans %}</a></p>
+    </div>
   </div>
-  </div>
-  {% endblock %}
+</div>
+{% endblock %}
 
-  {% block mainbody %}
-    {{ block.super }}
-    
-      {%block partners %}
-      <section id="partners">
-        <div class="container text-center">
-            <h2>Our Partners </h2> 
-            <div class="row">
-                <div class="col-md-6">
-                    <div class="logo-wb">
-                    </div>
-                </div>
-                <div class="col-md-6">
-                    <div class="logo-geo">
-                    </div>
-                </div>
-            </div>
+{% block mainbody %}
+{{ block.super }}
+<section id="partners">
+  <div class="container text-center">
+    <h2>Our Partners </h2>
+    <div class="row">
+      <div class="col-md-6">
+        <div class="logo-wb">
         </div>
-      </section>
-      {%endblock%}
-   {%endblock%}
+      </div>
+      <div class="col-md-6">
+        <div class="logo-geo">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{%endblock%}
